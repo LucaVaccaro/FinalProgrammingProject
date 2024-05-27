@@ -6,8 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-@Getter
-@Setter
 @EqualsAndHashCode
 public class Department {
 
@@ -15,7 +13,7 @@ public class Department {
     private String departmentName;
     private static int nextId = 1;
 
-    public Department(String departmentName) {
+    public Department(String departmentId, String departmentName) {
         if(validateDepartmentName(departmentName)) {
             this.departmentName = departmentName;
             this.departmentId = "D" + String.format("0%d", nextId++);
@@ -42,5 +40,25 @@ public class Department {
             }
         }
         return true;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public static void setNextId(int nextId) {
+        Department.nextId = nextId;
     }
 }
